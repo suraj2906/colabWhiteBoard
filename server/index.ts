@@ -3,7 +3,7 @@ const http = require('http')
 const app = express()
 const server = http.createServer(app)
 
-import {Server} from 'socket.io'
+const { Server } = require("socket.io");
 
 const io = new Server(server,{
     cors: {
@@ -91,7 +91,7 @@ const drawingStore = new DrawingDataStore();
 
 var roomName = '';
 
-io.on('connection', async (socket) => {
+io.on('connection', async (socket : any) => {
     console.log("Connection");
     
     // io.of('/').adapter.on('create-room', (room) => {
@@ -129,7 +129,7 @@ io.on('connection', async (socket) => {
         drawingStore.endCurrentStroke();
     })
 
-    socket.on('undo-stroke', (room) => {
+    socket.on('undo-stroke', (room: any) => {
         var undoneStroke = drawingStore.undoStroke();
         if(undoneStroke){
             for(let data of undoneStroke){
@@ -143,13 +143,13 @@ io.on('connection', async (socket) => {
         }
     })
 
-    socket.on('join-room', async room => {
+    socket.on('join-room', async (room : any) => {
         // io.to(socket.id).emit('enter-room', room)
         await socket.join(room)
         console.log(socket.rooms)
     })
 
-    socket.on('fetch-drawings', async room => {
+    socket.on('fetch-drawings', async (room : any) => {
         var roomDrawingData = drawingStore.getStrokesForRoom(room);
         if(roomDrawingData){
             for(let stroke of roomDrawingData)  
