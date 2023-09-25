@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { useRouter } from 'next/navigation';
 
-const socket = io('http://localhost:3001')
+const socket = io('https://colab-white-board.vercel.app:8080')
 
 export default function Home() {
   const  [joinRoomName, setJoinRoomName] =  useState('')
