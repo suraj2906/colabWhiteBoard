@@ -170,6 +170,6 @@ io.on('connection', async (socket : any) => {
     
 })
 
-server.listen(3001, () => {
+server.listen(process.env.PORT || 8000, () => {
     console.log('Server Listening on Port 3001')
 })
