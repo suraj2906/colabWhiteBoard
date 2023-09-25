@@ -14,7 +14,7 @@ import {IoColorPaletteOutline} from 'react-icons/io5'
 import DrawTools from '@/components/drawTools';
 
 
-const socket = io('https://colab-white-board.vercel.app:8080')
+const socket = io('https://colabwhiteboardserver.onrender.com')
 
 export default function Home({ params }) {
 
